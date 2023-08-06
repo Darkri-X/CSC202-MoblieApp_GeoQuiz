@@ -14,34 +14,56 @@ android {
         versionCode 1
         versionName "1.0"
 
+        // Specify the test instrumentation runner for AndroidJUnitRunner.
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
+            // Disable code minification for the release build.
             minifyEnabled false
+
+            // Specify the proguard files for code obfuscation.
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
+        // Set the source and target compatibility to Java 8.
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
+        // Set the JVM target for Kotlin code to 1.8.
         jvmTarget = '1.8'
     }
+
     buildFeatures {
+        // Enable view binding for the project.
         viewBinding true
     }
 }
 
 dependencies {
-
+    // Core Kotlin extensions.
     implementation 'androidx.core:core-ktx:1.8.0'
+
+    // AndroidX AppCompat library for compatibility support.
     implementation 'androidx.appcompat:appcompat:1.4.1'
+
+    // Material Design components.
     implementation 'com.google.android.material:material:1.5.0'
+
+    // ConstraintLayout for responsive UI design.
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+
+    // JUnit for unit testing.
     testImplementation 'junit:junit:4.13.2'
+
+    // AndroidX Test library for testing on Android devices.
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+
+    // Espresso library for UI testing.
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }

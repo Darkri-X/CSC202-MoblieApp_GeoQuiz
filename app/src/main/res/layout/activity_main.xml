@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Root LinearLayout container -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,6 +7,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
+
+    <!-- TextView to display the question text -->
     <TextView
         android:id="@+id/question_text_view"
         android:layout_width="wrap_content"
@@ -13,21 +16,29 @@
         android:gravity="center"
         android:padding="24dp"
         tools:text="@string/question_australia" />
+
+    <!-- LinearLayout to hold True and False buttons horizontally -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <!-- True button -->
         <Button
             android:id="@+id/true_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/true_button" />
+
+        <!-- False button -->
         <Button
             android:id="@+id/false_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/false_button" />
     </LinearLayout>
+
+    <!-- Button to move to the next question -->
     <Button
         android:id="@+id/next_button"
         android:layout_width="wrap_content"
@@ -36,6 +47,7 @@
         app:icon="@drawable/arrow_right"
         app:iconGravity="end" />
 
+    <!-- Button to move to the previous question -->
     <Button
         android:id="@+id/previous_button"
         android:layout_width="wrap_content"
