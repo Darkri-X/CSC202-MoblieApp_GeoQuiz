@@ -12,7 +12,6 @@
     <string name="incorrect_toast">Incorrect!</string>
     <string name="nope_toast">Nope!</string>
     <string name="next_button">Next</string>
-    <string name="previous_button">Previous</string>
-
+    <string name="previous_button">Prev</string>
 
 </resources>
