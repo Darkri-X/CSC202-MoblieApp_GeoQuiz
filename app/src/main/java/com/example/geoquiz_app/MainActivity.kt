@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import com.google.android.material.snackbar.Snackbar
-
 import com.example.geoquiz_app.databinding.ActivityMainBinding
 
 /**

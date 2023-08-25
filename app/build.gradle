@@ -41,7 +41,8 @@ android {
 
     buildFeatures {
         // Enable view binding for the project.
-        viewBinding true
+        dataBinding = true
+        viewBinding = true
     }
 }
 
