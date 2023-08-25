@@ -1,8 +1,10 @@
 package com.example.geoquiz_app
 
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.google.android.material.snackbar.Snackbar
 import com.example.geoquiz_app.databinding.ActivityMainBinding
@@ -17,6 +19,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val quizViewModel: QuizViewModel by viewModels()
+
+    private val cheatLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        // Handle the result
+    }
+
 
 
     /**
@@ -52,10 +61,12 @@ class MainActivity : AppCompatActivity() {
             updateQuestion()
         }
 
+        // Set up event listener for the Cheat button to activate CheatActivity
         binding.cheatButton.setOnClickListener {
-        // Start CheatActivity
+            val answerIsTrue = quizViewModel.currentQuestionAnswer
+            val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
+            cheatLauncher.launch(intent)
         }
-
 
         // Display the first question when the activity is created.
         updateQuestion()
