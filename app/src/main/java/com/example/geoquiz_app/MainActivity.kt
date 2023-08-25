@@ -1,6 +1,7 @@
 package com.example.geoquiz_app
 
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         // Handle the result
+        if (result.resultCode == Activity.RESULT_OK) {
+            quizViewModel.isCheater =
+                result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
+        }
     }
 
 
@@ -108,12 +113,15 @@ class MainActivity : AppCompatActivity() {
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = quizViewModel.currentQuestionAnswer
 
-        // Determine the appropriate message to display based on correctness.
-        val messageResId = if (userAnswer == correctAnswer) {
-            R.string.correct_snackbar
-        } else {
-            R.string.incorrect_snackbar
+        val messageResId = when {
+            quizViewModel.isCheater ->
+                R.string.judgment_snackbar
+            userAnswer == correctAnswer ->
+                R.string.correct_snackbar
+            else ->
+                R.string.incorrect_snackbar
         }
+
 
         // Display the Toast message with the result.
         Snackbar.make(binding.root, messageResId, Snackbar.LENGTH_SHORT).show()

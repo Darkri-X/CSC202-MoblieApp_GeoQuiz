@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.geoquiz_app.databinding.ActivityCheatBinding
 
+
 const val EXTRA_ANSWER_SHOWN = "com.example.android.geoquiz_app.answer_shown"
 
 private const val EXTRA_ANSWER_IS_TRUE = "com.example.android.geoquiz_app.answer_is_true"
