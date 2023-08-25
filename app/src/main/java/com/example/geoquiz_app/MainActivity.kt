@@ -19,18 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private val quizViewModel: QuizViewModel by viewModels()
 
-    // The list of questions with their corresponding answers (true for correct, false for incorrect).
-    private val questionBank = listOf(
-        Question(R.string.question_australia, true),
-        Question(R.string.question_oceans, true),
-        Question(R.string.question_mideast, false),
-        Question(R.string.question_africa, false),
-        Question(R.string.question_americas, true),
-        Question(R.string.question_asia, true)
-    )
 
-    // Index to keep track of the current question being displayed.
-    private var currentIndex = 0
 
     /**
      * Called when the activity is created. Sets up the UI and event listeners.
@@ -55,13 +44,13 @@ class MainActivity : AppCompatActivity() {
 
         // Set up event listener for the Next button to display the next question.
         binding.nextButton.setOnClickListener {
-            currentIndex = (currentIndex + 1) % questionBank.size
+            quizViewModel.moveToNext()
             updateQuestion()
         }
 
         // Set up event listener for the Previous button to display the previous question.
         binding.previousButton.setOnClickListener {
-            currentIndex = if (currentIndex > 0) currentIndex - 1 else questionBank.size - 1
+            quizViewModel.moveToPrevious()
             updateQuestion()
         }
 
@@ -94,7 +83,7 @@ class MainActivity : AppCompatActivity() {
      * Updates the question displayed on the UI.
      */
     private fun updateQuestion() {
-        val questionTextResId = questionBank[currentIndex].textResId
+        val questionTextResId = quizViewModel.currentQuestionText
         binding.questionTextView.setText(questionTextResId)
     }
 
@@ -103,7 +92,7 @@ class MainActivity : AppCompatActivity() {
      * @param userAnswer The user's answer (true or false).
      */
     private fun checkAnswer(userAnswer: Boolean) {
-        val correctAnswer = questionBank[currentIndex].answer
+        val correctAnswer = quizViewModel.currentQuestionAnswer
 
         // Determine the appropriate message to display based on correctness.
         val messageResId = if (userAnswer == correctAnswer) {

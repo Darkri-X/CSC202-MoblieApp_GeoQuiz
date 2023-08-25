@@ -60,6 +60,7 @@ dependencies {
 
     implementation 'androidx.activity:activity-ktx:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.test.ext:junit-ktx:1.1.5'
     // JUnit for unit testing.
     testImplementation 'junit:junit:4.13.2'
     // AndroidX Test library for testing on Android devices.
