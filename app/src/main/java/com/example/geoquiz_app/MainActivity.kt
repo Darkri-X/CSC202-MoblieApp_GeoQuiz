@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     private val quizViewModel: QuizViewModel by viewModels()
 
 
-
     /**
      * Called when the activity is created. Sets up the UI and event listeners.
      * @param savedInstanceState The saved instance state, if any.
@@ -53,6 +52,11 @@ class MainActivity : AppCompatActivity() {
             quizViewModel.moveToPrevious()
             updateQuestion()
         }
+
+        binding.cheatButton.setOnClickListener {
+        // Start CheatActivity
+        }
+
 
         // Display the first question when the activity is created.
         updateQuestion()
