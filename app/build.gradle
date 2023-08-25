@@ -48,29 +48,22 @@ android {
 dependencies {
     // Core Kotlin extensions.
     implementation 'androidx.core:core-ktx:1.8.0'
-
     // AndroidX AppCompat library for compatibility support.
     implementation 'androidx.appcompat:appcompat:1.4.1'
-
     // Material Design components.
     implementation 'com.google.android.material:material:1.5.0'
-
     // ConstraintLayout for responsive UI design.
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    // Dependencies for ViewModel
 
-    //
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
-
-    //
     implementation 'androidx.activity:activity-ktx:1.4.0'
 
-
+    implementation 'androidx.activity:activity-ktx:1.4.0'
+    implementation 'com.google.android.material:material:1.4.0'
     // JUnit for unit testing.
     testImplementation 'junit:junit:4.13.2'
-
     // AndroidX Test library for testing on Android devices.
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-
     // Espresso library for UI testing.
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 

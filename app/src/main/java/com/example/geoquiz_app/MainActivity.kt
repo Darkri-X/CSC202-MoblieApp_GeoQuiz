@@ -3,7 +3,8 @@ package com.example.geoquiz_app
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import androidx.activity.viewModels
+import com.google.android.material.snackbar.Snackbar
 
 import com.example.geoquiz_app.databinding.ActivityMainBinding
 
@@ -15,6 +16,8 @@ private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private val quizViewModel: QuizViewModel by viewModels()
 
     // The list of questions with their corresponding answers (true for correct, false for incorrect).
     private val questionBank = listOf(
@@ -38,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate(Bundle?) called")
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Log.d(TAG, "Got a QuizViewModel: $quizViewModel")
 
         // Set up event listeners for True and False buttons to check user answers.
         binding.trueButton.setOnClickListener {
@@ -102,12 +107,12 @@ class MainActivity : AppCompatActivity() {
 
         // Determine the appropriate message to display based on correctness.
         val messageResId = if (userAnswer == correctAnswer) {
-            R.string.correct_toast
+            R.string.correct_snackbar
         } else {
-            R.string.incorrect_toast
+            R.string.incorrect_snackbar
         }
 
         // Display the Toast message with the result.
-        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
+        Snackbar.make(binding.root, messageResId, Snackbar.LENGTH_SHORT).show()
     }
 }
